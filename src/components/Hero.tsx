@@ -8,7 +8,8 @@ export default function Hero() {
         display: 'flex',
         flexDirection: 'column',
         gap: '24px',
-        padding: '0 0 0 0'
+        padding: '0 0 0 0',
+        minHeight: '100vh'
       }}>
       <div style={{
         display: 'flex',
@@ -23,29 +24,40 @@ export default function Hero() {
         </Link>
       </div>
 
-      <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px' }}>
-        <h1 style={{
-          fontSize: '48px',
-          lineHeight: 1.1,
-          margin: 0,
-          fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          fontWeight: 700
-        }}>
-          Your Vision, Designed and Developed
-        </h1>
-        <p style={{
-          marginTop: '12px',
-          maxWidth: '800px',
-          fontSize: '18px',
-          color: '#555',
-          marginBottom: 0,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          fontWeight: 400
-        }}>
-          Building beautiful, scalable, and high-performing web experiences from the ground up.
-        </p>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '-120px' }}>
+        <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px' }}>
+          <h1 style={{
+            fontSize: '80px',
+            lineHeight: 1.1,
+            margin: 0,
+            fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            fontWeight: 700
+          }}>
+            Your Vision, Designed and Developed
+          </h1>
+          <p style={{
+            marginTop: '12px',
+            maxWidth: '800px',
+            fontSize: '20px',
+            color: '#555',
+            marginBottom: 0,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            fontWeight: 400
+          }}>
+            Building beautiful, scalable, and high-performing <br/>web experiences from the ground up.
+          </p>
+
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/">
+              <Button size="cta">
+                Book a Call
+              </Button>
+            </Link>
+
+          </div>
+        </div>
       </div>
     </section>
   );
