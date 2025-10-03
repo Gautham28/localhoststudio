@@ -11,10 +11,12 @@ export default function Hero() {
         padding: '0 0 0 0',
         minHeight: '100vh'
       }}>
-        <div style={{
+      <div style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        position: 'relative',
+        zIndex: 1
       }}>
         <img src="/assets/logos/logodark.svg" alt="Localhost Studio" width={180} height={48} />
         <Link href="/">
@@ -24,8 +26,8 @@ export default function Hero() {
         </Link>
       </div>
 
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '-120px' }}>
-        <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px' }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1 }}>
           <h1 style={{
             fontSize: '80px',
             lineHeight: 1.1,
