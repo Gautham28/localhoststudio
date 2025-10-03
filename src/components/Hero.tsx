@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion, Variants } from 'framer-motion';
+import { Tiles } from '@/components/ui/tiles';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -32,8 +33,15 @@ export default function Hero() {
         flexDirection: 'column',
         gap: '24px',
         padding: '0 0 0 0',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        // @ts-expect-error CSS var
+        ['--tile']: 'oklch(0.97 0 0)'
       }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.35 }}>
+        <Tiles rows={60} cols={14} tileSize="md" />
+      </div>
       <div style={{
         display: 'flex',
         alignItems: 'center',
