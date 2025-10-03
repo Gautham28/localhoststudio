@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion, Variants } from 'framer-motion';
 import { Tiles } from '@/components/ui/tiles';
+import { Slider3D } from '@/components/ui/slider3d';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -27,6 +28,11 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const sliderImages = [
+    '/assets/images/salesdashboard.png',
+    '/assets/images/sportslandingpage.png'
+  ];
+
   return (
     <section style={{
         display: 'flex',
@@ -59,7 +65,7 @@ export default function Hero() {
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <motion.div
-          style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1 }}
+          style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '80px' }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -100,6 +106,11 @@ export default function Hero() {
                 Book a Call
               </Button>
             </Link>
+          </motion.div>
+
+          {/* 3D Slider below the Book a Call button */}
+          <motion.div style={{ marginTop: '48px' }} variants={item}>
+            <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>
       </div>
