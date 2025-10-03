@@ -1,6 +1,29 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { motion, Variants } from 'framer-motion';
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: EASE }
+  }
+};
 
 export default function Hero() {
   return (
@@ -27,39 +50,50 @@ export default function Hero() {
       </div>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1 }}>
-          <h1 style={{
-            fontSize: '80px',
-            lineHeight: 1.1,
-            margin: 0,
-            fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-            fontWeight: 700
-          }}>
+        <motion.div
+          style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1 }}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.h1
+            style={{
+              fontSize: '80px',
+              lineHeight: 1.1,
+              margin: 0,
+              fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontWeight: 700
+            }}
+            variants={item}
+          >
             Your Vision, Designed and Developed
-          </h1>
-          <p style={{
-            marginTop: '12px',
-            maxWidth: '800px',
-            fontSize: '20px',
-            color: '#555',
-            marginBottom: 0,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-            fontWeight: 400
-          }}>
-            Building beautiful, scalable, and high-performing <br/>web experiences from the ground up.
-          </p>
+          </motion.h1>
 
-          <div style={{ marginTop: '24px' }}>
+          <motion.p
+            style={{
+              marginTop: '12px',
+              maxWidth: '800px',
+              fontSize: '20px',
+              color: '#555',
+              marginBottom: 0,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontWeight: 400
+            }}
+            variants={item}
+          >
+            Building beautiful, scalable, and high-performing <br/>web experiences from the ground up.
+          </motion.p>
+
+          <motion.div style={{ marginTop: '24px' }} variants={item}>
             <Link href="/">
               <Button size="cta">
                 Book a Call
               </Button>
             </Link>
-
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
