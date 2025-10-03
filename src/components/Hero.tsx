@@ -11,7 +11,7 @@ export default function Hero() {
         padding: '0 0 0 0',
         minHeight: '100vh'
       }}>
-      <div style={{
+        <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between'
