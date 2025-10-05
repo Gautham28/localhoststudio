@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { SmoothCursor } from "@/components/ui/smooth-cursor"
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Services />
       <FAQ />
       <Footer />
+      <SmoothCursor />
     </main>
 
   );
