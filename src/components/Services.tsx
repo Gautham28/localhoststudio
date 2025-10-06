@@ -68,7 +68,7 @@ export default function Services() {
       display: 'flex',
       flexDirection: 'column',
       gap: '48px',
-      padding: '120px 0',
+      padding: '160px 0 20px',
       position: 'relative',
       overflow: 'hidden',
       // @ts-expect-error CSS var
