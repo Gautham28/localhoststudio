@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
+import { useContactModal } from '@/components/ContactModal';
 
 function SocialIcon({
   children,
@@ -39,6 +40,7 @@ function SocialIcon({
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { openModal } = useContactModal();
 
   return (
     <footer
@@ -125,9 +127,8 @@ export default function Footer() {
             Ready to Start? lets&apos;s Talk
           </p>
 
-          <Link
-            href="https://cal.com"
-            target="_blank"
+          <button
+            onClick={openModal}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -142,11 +143,12 @@ export default function Footer() {
               fontWeight: 700,
               border: '1px solid #111',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-              width: 'fit-content'
+              width: 'fit-content',
+              cursor: 'pointer'
             }}
           >
             Book a call
-          </Link>
+          </button>
         </div>
       </div>
 

@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion, Variants } from 'framer-motion';
 import { Tiles } from '@/components/ui/tiles';
 import { Slider3D } from '@/components/ui/slider3d';
+import { useContactModal } from '@/components/ContactModal';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -35,6 +35,7 @@ export default function Hero() {
     '/assets/images/uxora.png',
     '/assets/images/sports2.png'
   ];
+  const { openModal } = useContactModal();
 
   return (
     <section style={{
@@ -59,11 +60,9 @@ export default function Hero() {
         zIndex: 1
       }}>
         <img src="/assets/logos/logodark.svg" alt="Localhost Studio" width={180} height={48} />
-        <Link href="/">
-          <Button variant="outline" size="cta" className="border-black text-black">
-            Book a Call
-          </Button>
-        </Link>
+        <Button onClick={openModal} variant="outline" size="cta" className="border-black text-black">
+          Book a Call
+        </Button>
       </div>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -104,11 +103,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.div style={{ marginTop: '24px' }} variants={item}>
-            <Link href="/">
-              <Button size="cta">
-                Book a Call
-              </Button>
-            </Link>
+            <Button onClick={openModal} size="cta">
+              Book a Call
+            </Button>
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
