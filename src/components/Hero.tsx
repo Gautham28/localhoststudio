@@ -29,8 +29,11 @@ const item: Variants = {
 
 export default function Hero() {
   const sliderImages = [
-    '/assets/images/salesdashboard.png',
-    '/assets/images/sportslandingpage.png'
+    '/assets/images/darkdashboard.png',
+    '/assets/images/realestate.png',
+    '/assets/images/sports.png',
+    '/assets/images/uxora.png',
+    '/assets/images/sports2.png'
   ];
 
   return (
