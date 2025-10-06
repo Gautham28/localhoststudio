@@ -86,8 +86,8 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
           <div style={{ padding: 32, display: "flex", flexDirection: "column", gap: 24 }}>
             <img src="/assets/logos/logodark2.svg" alt="Localhost Studio" width={200} height={54} />
             <div style={{ display: "flex", flexDirection: "column", gap: 28, justifyContent: "center", flex: 1 }}>
-              <InfoItem Icon={MessageCircle} title="Chat to us" subtitle="Our friendly team is here to help." detail="hi@untitledui.com" />
-              <InfoItem Icon={Phone} title="Call us" subtitle="Mon–Fri from 8am to 5pm." detail={"+1 (555) 000–0000"} />
+              <InfoItem Icon={MessageCircle} title="Chat to us" subtitle="Our friendly team is here to help." detail="localhoststudio@gmail.com" />
+              <InfoItem Icon={Phone} title="Call us" subtitle="Reach out to us on our number." detail={"+91 9405061349"} />
             </div>
           </div>
 
