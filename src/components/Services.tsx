@@ -31,6 +31,7 @@ type Service = {
   title: string;
   description?: string;
   tags?: string[];
+  images: [string, string];
 };
 
 const SERVICES: Service[] = [
@@ -39,24 +40,28 @@ const SERVICES: Service[] = [
     title: 'Web Development',
     description:
       'Modern, user-friendly websites designed to engage visitors and drive results.',
-    tags: ['Landing Pages', 'Portfolio Sites', 'Business Websites']
+    tags: ['Landing Pages', 'Portfolio Sites', 'Business Websites'],
+    images: ['/assets/images/darkdashboard.png', '/assets/images/uxora.png']
   },
   { id: 2,
     title: 'UI/UX Design',
     description:
       'Intuitive and beautiful digital experiences that captivate users.',
-    tags: ['User Interface', 'User Experience', 'Wireframing', 'Prototyping']
+    tags: ['User Interface', 'User Experience', 'Wireframing', 'Prototyping'],
+    images: ['/assets/images/uxora.png', '/assets/images/realestate.png']
    },
   { id: 3, 
     title: 'Branding',
     description:
       'Cohesive brand identities that tell your story and resonate with your audience.',
-    tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Brand Guidelines'] },
+    tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Brand Guidelines'],
+    images: ['/assets/images/sports.png', '/assets/images/sports2.png'] },
   { id: 4, 
     title: 'App Development',
     description:
       'Innovative mobile and web applications designed for seamless functionality.',
-    tags: ['iOS Apps', 'Android Apps', 'Cross-Platform', 'Web Applications']
+    tags: ['iOS Apps', 'Android Apps', 'Cross-Platform', 'Web Applications'],
+    images: ['/assets/images/realestate.png', '/assets/images/darkdashboard.png']
    }
 ];
 
@@ -106,7 +111,6 @@ export default function Services() {
                   letterSpacing: '-1px',
                   fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                   fontWeight: 700,
-                  color: '#bfbfbf'
                 }}>OUR</h2>
               </div>
               <div style={{ marginTop: '-8px' }}>
@@ -238,7 +242,7 @@ export default function Services() {
                               overflow: 'hidden',
                               boxShadow: '0 20px 60px rgba(0,0,0,0.35)'
                             }}>
-                              <Image src="/assets/images/uxora.png" alt="showcase" fill style={{ objectFit: 'cover' }} />
+                              <Image src={service.images[0]} alt="showcase" fill style={{ objectFit: 'cover' }} />
                             </div>
                             <div style={{
                               position: 'absolute', inset: 0,
@@ -248,7 +252,7 @@ export default function Services() {
                               overflow: 'hidden',
                               boxShadow: '0 20px 60px rgba(0,0,0,0.25)'
                             }}>
-                              <Image src="/assets/images/darkdashboard.png" alt="showcase" fill style={{ objectFit: 'cover' }} />
+                              <Image src={service.images[1]} alt="showcase" fill style={{ objectFit: 'cover' }} />
                             </div>
                           </div>
                         </div>
