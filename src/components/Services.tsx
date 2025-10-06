@@ -36,10 +36,10 @@ type Service = {
 const SERVICES: Service[] = [
   {
     id: 1,
-    title: 'Web Design',
+    title: 'Web Development',
     description:
       'Modern, user-friendly websites designed to engage visitors and drive results.',
-    tags: ['Landing Pages', 'Portfolio Sites', 'Business Websites', '+2']
+    tags: ['Landing Pages', 'Portfolio Sites', 'Business Websites']
   },
   { id: 2,
     title: 'UI/UX Design',
