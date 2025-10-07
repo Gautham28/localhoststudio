@@ -49,7 +49,7 @@ export default function FAQ() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '120px 0',
+      padding: '120px 0 48px',
       backgroundColor: 'white',
       minHeight: '100vh'
     }}>
