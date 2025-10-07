@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Tiles } from '@/components/ui/tiles';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -67,13 +66,21 @@ const SERVICES: Service[] = [
 
 export default function Services() {
   const [openIndex, setOpenIndex] = React.useState<number>(0);
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 640);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   return (
     <section style={{
       display: 'flex',
       flexDirection: 'column',
-      gap: '48px',
-      padding: '160px 0 20px',
+      gap: isMobile ? '28px' : '48px',
+      padding: isMobile ? '80px 0 12px' : '160px 0 20px',
       position: 'relative',
       overflow: 'hidden',
       // @ts-expect-error CSS var
@@ -85,7 +92,7 @@ export default function Services() {
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: isMobile ? '0 12px' : 0 }}>
         {/* Header Row */}
         <motion.div
           variants={container}
@@ -97,8 +104,8 @@ export default function Services() {
             variants={item}
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 420px',
-              gap: '24px',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 420px',
+              gap: isMobile ? '12px' : '24px',
               alignItems: 'end'
             }}
           >
@@ -106,7 +113,7 @@ export default function Services() {
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
                 <h2 style={{
                   margin: 0,
-                  fontSize: '72px',
+                  fontSize: isMobile ? '44px' : '72px',
                   lineHeight: 0.95,
                   letterSpacing: '-1px',
                   fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -116,7 +123,7 @@ export default function Services() {
               <div style={{ marginTop: '-8px' }}>
                 <h3 style={{
                   margin: 0,
-                  fontSize: '72px',
+                  fontSize: isMobile ? '44px' : '72px',
                   lineHeight: 0.95,
                   letterSpacing: '-1px',
                   fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -124,10 +131,10 @@ export default function Services() {
                 }}>SERVICES.</h3>
               </div>
             </div>
-            <div style={{ justifySelf: 'end', textAlign: 'left' }}>
+            <div style={{ justifySelf: isMobile ? 'start' : 'end', textAlign: 'left' }}>
               <p style={{
                 margin: 0,
-                fontSize: '16px',
+                fontSize: isMobile ? '14px' : '16px',
                 color: '#666',
                 lineHeight: 1.6,
                 fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
@@ -139,7 +146,7 @@ export default function Services() {
           </motion.div>
 
           {/* Divider */}
-          <motion.div variants={item} style={{ height: '1px', background: '#e5e5e5', margin: '24px 0 8px' }} />
+          <motion.div variants={item} style={{ height: '1px', background: '#e5e5e5', margin: isMobile ? '16px 0 4px' : '24px 0 8px' }} />
 
           {/* Accordion */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -154,11 +161,11 @@ export default function Services() {
                     borderRadius: '28px',
                     background: isOpen ? '#0f0f0f' : 'oklch(0.99 0 0)',
                     color: isOpen ? 'white' : 'black',
-                    padding: isOpen ? '32px 72px' : '24px',
+                    padding: isOpen ? (isMobile ? '24px' : '32px 72px') : (isMobile ? '18px' : '24px'),
                     border: isOpen ? '1px solid #1f1f1f' : '1px solid #f0f0f0',
-                    marginLeft: isOpen ? '-24px' : 0,
-                    marginRight: isOpen ? '-24px' : 0,
-                    minHeight: isOpen ? '286px' : undefined,
+                    marginLeft: isOpen ? (isMobile ? 0 : '-24px') : 0,
+                    marginRight: isOpen ? (isMobile ? 0 : '-24px') : 0,
+                    minHeight: isOpen ? (isMobile ? '260px' : '286px') : undefined,
                     overflow: isOpen ? 'hidden' : 'visible'
                   }}
                 >
@@ -167,7 +174,9 @@ export default function Services() {
                     style={{
                       all: 'unset',
                       display: 'grid',
-                      gridTemplateColumns: isOpen ? '80px 1fr 300px 80px' : '80px 16px 1fr 80px',
+                      gridTemplateColumns: isMobile
+                        ? (isOpen ? '1fr auto' : '1fr auto')
+                        : (isOpen ? '80px 1fr 300px 80px' : '80px 16px 1fr 80px'),
                       alignItems: 'center',
                       gap: '16px',
                       width: '100%',
@@ -176,7 +185,7 @@ export default function Services() {
                   >
                     {/* Number */}
                     <div style={{
-                      fontSize: '28px',
+                      fontSize: isMobile ? '22px' : '28px',
                       fontWeight: 600,
                       fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                       color: isOpen ? 'white' : '#1a1a1a'
@@ -184,15 +193,15 @@ export default function Services() {
                       {String(service.id).padStart(2, '0')}
                     </div>
 
-                    {/* Dot when closed */}
-                    {!isOpen && (
+                    {/* Dot when closed (hide on mobile to save space) */}
+                    {!isOpen && !isMobile && (
                       <div style={{ width: '8px', height: '8px', background: '#1a1a1a', borderRadius: 999 }} />
                     )}
 
                     {/* Title and content */}
-                    <div style={{ width: '100%', minWidth: 0 }}>
+                    <div style={{ width: '100%', minWidth: 0, gridColumn: isMobile ? '1 / span 2' : undefined }}>
                       <div style={{
-                        fontSize: '32px',
+                        fontSize: isMobile ? '28px' : '32px',
                         fontWeight: 700,
                         marginBottom: isOpen ? '8px' : 0,
                         fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
@@ -202,7 +211,7 @@ export default function Services() {
 
                       {isOpen && (
                         <div>
-                          <p style={{ margin: 0, color: '#b3b3b3', maxWidth: '580px', lineHeight: 1.6 }}>
+                          <p style={{ margin: 0, color: '#b3b3b3', maxWidth: isMobile ? 'unset' : '580px', lineHeight: 1.6, fontSize: isMobile ? '14px' : '16px' }}>
                             {service.description}
                           </p>
                           {/* Tags */}
@@ -213,11 +222,11 @@ export default function Services() {
                                 style={{
                                   display: 'inline-flex',
                                   alignItems: 'center',
-                                  padding: '10px 14px',
+                                  padding: isMobile ? '8px 12px' : '10px 14px',
                                   borderRadius: '999px',
                                   background: '#1b1b1b',
                                   color: 'white',
-                                  fontSize: '14px',
+                                  fontSize: isMobile ? '13px' : '14px',
                                   border: '1px solid #2a2a2a'
                                 }}
                               >
@@ -231,9 +240,9 @@ export default function Services() {
 
                     {/* Image stack when open */}
                     {isOpen && (
-                      <div style={{ justifySelf: 'end', position: 'relative', height: '220px', pointerEvents: 'none' }}>
+                      <div style={{ justifySelf: isMobile ? 'start' : 'end', position: 'relative', height: isMobile ? '180px' : '220px', pointerEvents: 'none', gridColumn: isMobile ? '1 / span 2' : undefined }}>
                         <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center' }}>
-                          <div style={{ position: 'relative', width: '280px', height: '186px' }}>
+                          <div style={{ position: 'relative', width: isMobile ? '240px' : '280px', height: isMobile ? '160px' : '186px' }}>
                             <div style={{
                               position: 'absolute', inset: 0,
                               transform: 'rotate(-8deg) translateX(-8px)',
@@ -262,14 +271,14 @@ export default function Services() {
                     {/* Toggle Icon */}
                     <div style={{ justifySelf: 'end' }}>
                       <div style={{
-                        width: 48,
-                        height: 48,
+                        width: isMobile ? 42 : 48,
+                        height: isMobile ? 42 : 48,
                         borderRadius: 999,
                         background: isOpen ? '#e8ff2a' : '#0f0f0f',
                         color: isOpen ? '#0f0f0f' : '#ffffff',
                         display: 'grid',
                         placeItems: 'center',
-                        fontSize: 24,
+                        fontSize: isMobile ? 20 : 24,
                         fontWeight: 700
                       }}>
                         {isOpen ? '−' : '+'}

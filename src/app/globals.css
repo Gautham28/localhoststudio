@@ -127,6 +127,11 @@ body {
   box-sizing: border-box;
 }
 
+/* Prevent horizontal scrolling caused by full-bleed sections */
+html, body {
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }

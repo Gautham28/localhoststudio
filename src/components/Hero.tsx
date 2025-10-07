@@ -41,8 +41,8 @@ export default function Hero() {
     <section style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '24px',
-        padding: '0 0 0 0',
+			gap: '16px',
+			padding: '0 0 0 0',
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
@@ -52,29 +52,31 @@ export default function Hero() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.35 }}>
         <Tiles rows={60} cols={14} tileSize="md" />
       </div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'relative',
-        zIndex: 1
-      }}>
-        <img src="/assets/logos/logodark.svg" alt="Localhost Studio" width={180} height={48} />
-        <Button onClick={openModal} variant="outline" size="cta" className="border-black text-black">
-          Book a Call
-        </Button>
-      </div>
+		<div style={{
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'space-between',
+			gap: '12px',
+			position: 'relative',
+			zIndex: 1,
+			paddingTop: '4px'
+		  }}>
+			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: 'min(160px, 40vw)' }} width={160} height={48} />
+			<Button onClick={openModal} variant="outline" size="sm" className="border-black text-black md:size-cta">
+			  Book a Call
+			</Button>
+		  </div>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <motion.div
-          style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '80px' }}
+		<motion.div
+		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '56px' }}
           variants={container}
           initial="hidden"
           animate="show"
         >
           <motion.h1
             style={{
-              fontSize: '80px',
+			  fontSize: 'clamp(36px, 8vw, 80px)',
               lineHeight: 1.1,
               margin: 0,
               fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -87,9 +89,9 @@ export default function Hero() {
 
           <motion.p
             style={{
-              marginTop: '12px',
-              maxWidth: '800px',
-              fontSize: '20px',
+			  marginTop: '12px',
+			  maxWidth: '720px',
+			  fontSize: 'clamp(14px, 3.8vw, 20px)',
               color: '#555',
               marginBottom: 0,
               marginLeft: 'auto',
@@ -99,17 +101,17 @@ export default function Hero() {
             }}
             variants={item}
           >
-            Building beautiful, scalable, and high-performing <br/>web experiences from the ground up.
+			Building beautiful, scalable, and high-performing <span className="hidden sm:inline"><br/></span>web experiences from the ground up.
           </motion.p>
 
-          <motion.div style={{ marginTop: '24px' }} variants={item}>
-            <Button onClick={openModal} size="cta">
+		  <motion.div style={{ marginTop: '20px' }} variants={item}>
+			<Button onClick={openModal} size="sm" className="md:size-cta">
               Book a Call
             </Button>
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
-          <motion.div style={{ marginTop: '48px' }} variants={item}>
+		  <motion.div style={{ marginTop: '32px' }} variants={item}>
             <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>

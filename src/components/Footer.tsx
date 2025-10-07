@@ -41,23 +41,31 @@ function SocialIcon({
 export default function Footer() {
   const year = new Date().getFullYear();
   const { openModal } = useContactModal();
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 640);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   return (
     <footer
       style={{
-        marginTop: 120,
+        marginTop: isMobile ? 72 : 120,
         background: 'oklch(0.97 0 0)',
         border: '1px solid #e5e5e5',
         borderRadius: 28,
-        padding: '72px 32px',
+        padding: isMobile ? '40px 16px' : '72px 32px',
       }}
     >
       {/* Top row */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1px 420px',
-          gap: 32,
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1px 420px',
+          gap: isMobile ? 24 : 32,
           alignItems: 'center'
         }}
       >
@@ -103,13 +111,15 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div
-          style={{
-            width: 1,
-            height: '100%',
-            background: '#e8e8e8'
-          }}
-        />
+        {!isMobile && (
+          <div
+            style={{
+              width: 1,
+              height: '100%',
+              background: '#e8e8e8'
+            }}
+          />
+        )}
 
         {/* Right: CTA */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -117,14 +127,14 @@ export default function Footer() {
             style={{
               margin: 0,
               color: '#333',
-              fontSize: 28,
+              fontSize: isMobile ? 22 : 28,
               lineHeight: 1.4,
               fontFamily:
                 "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
               fontWeight: 500
             }}
           >
-            Ready to Start? lets&apos;s Talk
+            Ready to Start? let’s Talk
           </p>
 
           <button
@@ -133,13 +143,13 @@ export default function Footer() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: 64,
-              padding: '0 28px',
+              height: isMobile ? 52 : 64,
+              padding: isMobile ? '0 22px' : '0 28px',
               background: '#111',
               color: '#fff',
               textDecoration: 'none',
               borderRadius: 9999,
-              fontSize: 18,
+              fontSize: isMobile ? 16 : 18,
               fontWeight: 700,
               border: '1px solid #111',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
@@ -155,19 +165,20 @@ export default function Footer() {
       {/* Bottom row */}
       <div
         style={{
-          marginTop: 56,
-          paddingTop: 24,
+          marginTop: isMobile ? 36 : 56,
+          paddingTop: isMobile ? 16 : 24,
           borderTop: '1px solid #e9e9e9',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          alignItems: isMobile ? 'flex-start' : 'center',
+          justifyContent: isMobile ? 'space-between' : 'space-between',
           gap: 16,
+          flexDirection: isMobile ? 'column' : 'row'
         }}
       >
         <span
           style={{
             color: '#111',
-            fontSize: 18,
+            fontSize: isMobile ? 16 : 18,
             fontWeight: 600,
             letterSpacing: 0.2,
             fontFamily:
@@ -183,7 +194,7 @@ export default function Footer() {
             color: '#111',
             opacity: 0.8,
             textDecoration: 'none',
-            fontSize: 18,
+            fontSize: isMobile ? 16 : 18,
             fontWeight: 500,
             fontFamily:
               "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",

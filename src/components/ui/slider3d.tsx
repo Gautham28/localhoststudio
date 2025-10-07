@@ -16,15 +16,16 @@ export function Slider3D({ images }: Slider3DProps) {
     <div 
       className="relative overflow-hidden"
       style={{ 
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
-        marginRight: 'calc(-50vw + 50%)'
+        /* use small viewport units to avoid iOS/Chrome URL bar causing overflow */
+        width: '100svw',
+        marginLeft: 'calc(-50svw + 50%)',
+        marginRight: 'calc(-50svw + 50%)'
       }}
     >
       {/* Main slider container - full viewport width */}
       <div className="relative">
         <motion.div
-          className="flex gap-6"
+          className="flex gap-4 md:gap-6"
           animate={{ x: '-100%' }}
           transition={{ 
             duration: 20, 
@@ -35,7 +36,7 @@ export function Slider3D({ images }: Slider3DProps) {
           {duplicatedImages.map((image, index) => (
             <div 
               key={index} 
-              className="flex-shrink-0 w-[500px] h-[350px] rounded-xl overflow-hidden shadow-lg bg-white"
+              className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg bg-white w-[240px] h-[160px] sm:w-[320px] sm:h-[220px] md:w-[420px] md:h-[290px] lg:w-[500px] lg:h-[350px]"
             >
               <Image
                 src={image}

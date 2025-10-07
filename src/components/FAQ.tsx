@@ -61,21 +61,22 @@ export default function FAQ() {
         {/* FAQ Title */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '64px'
+          marginBottom: 'min(56px, 12svh)'
         }}>
           <h2 style={{
-            fontSize: '48px',
+            fontSize: 'clamp(28px, 10vw, 48px)',
             lineHeight: 1.1,
             margin: 0,
             fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
             fontWeight: 700,
             color: '#1a1a1a',
-            marginBottom: '16px'
+            marginBottom: '12px',
+            letterSpacing: '-0.02em'
           }}>
             Frequently Asked Questions
           </h2>
           <p style={{
-            fontSize: '18px',
+            fontSize: 'clamp(14px, 4.2vw, 18px)',
             color: '#666',
             margin: 0,
             fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
