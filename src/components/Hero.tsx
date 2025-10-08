@@ -36,6 +36,14 @@ export default function Hero() {
     '/assets/images/sports2.png'
   ];
   const { openModal } = useContactModal();
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 640);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   return (
     <section style={{
@@ -61,7 +69,7 @@ export default function Hero() {
 			zIndex: 1,
 			paddingTop: '4px'
 		  }}>
-			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: 'min(160px, 40vw)' }} width={160} height={48} />
+			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: isMobile ? 'min(140px, 32vw)' : 'min(160px, 40vw)' }} width={160} height={48} />
 			<button
 			  onClick={openModal}
 			  style={{
@@ -99,16 +107,16 @@ export default function Hero() {
 			</button>
 		  </div>
 
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 		<motion.div
-		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '64px' }}
+			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '24px' : '64px' }}
           variants={container}
           initial="hidden"
           animate="show"
         >
           <motion.h1
             style={{
-			  fontSize: 'clamp(36px, 8vw, 80px)',
+			  fontSize: isMobile ? '42px' : 'clamp(36px, 8vw, 80px)',
               lineHeight: 1.1,
               margin: 0,
               fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -176,7 +184,7 @@ export default function Hero() {
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
-		  <motion.div style={{ marginTop: '64px' }} variants={item}>
+		  <motion.div style={{ marginTop: isMobile ? '40px' : '64px' }} variants={item}>
             <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>
