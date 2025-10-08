@@ -142,6 +142,10 @@ body {
   .hero-stack {
     align-items: flex-start !important;
   }
+  /* Remove full-viewport height on mobile to avoid large gap */
+  .hero-section {
+    min-height: auto !important;
+  }
   /* Mobile-only: tighten space before Services */
   .services-section {
     padding-top: 24px !important; /* controlled here, not inline */

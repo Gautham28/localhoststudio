@@ -46,7 +46,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section style={{
+    <section className="hero-section" style={{
         display: 'flex',
         flexDirection: 'column',
 			gap: isMobile ? '4px' : '16px',
@@ -185,7 +185,7 @@ export default function Hero() {
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
-		  <motion.div style={{ marginTop: isMobile ? '40px' : '64px' }} variants={item}>
+		  <motion.div style={{ marginTop: isMobile ? '24px' : '64px' }} variants={item}>
             <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>
