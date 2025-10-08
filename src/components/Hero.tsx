@@ -87,13 +87,11 @@ export default function Hero() {
 			  onMouseEnter={(e) => {
 				e.currentTarget.style.background = '#111';
 				e.currentTarget.style.color = '#fff';
-				e.currentTarget.style.transform = 'scale(1.05)';
 				e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
 			  }}
 			  onMouseLeave={(e) => {
 				e.currentTarget.style.background = '#fff';
 				e.currentTarget.style.color = '#111';
-				e.currentTarget.style.transform = 'scale(1)';
 				e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
 			  }}
 			>
