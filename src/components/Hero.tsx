@@ -133,7 +133,7 @@ export default function Hero() {
 				alignItems: 'center',
 				justifyContent: 'center',
 				height: 52,
-				padding: '0 22px',
+				padding: '0 28px',
 				background: '#111',
 				color: '#fff',
 				textDecoration: 'none',
