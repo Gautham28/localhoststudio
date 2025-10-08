@@ -114,7 +114,7 @@ export function SmoothCursor({
     const detectCoarsePointer = () => {
       if (typeof window === "undefined") return false
       const isCoarseMQ = window.matchMedia && window.matchMedia("(pointer: coarse)").matches
-      const hasTouch = "ontouchstart" in window || (typeof navigator !== "undefined" && (navigator as { maxTouchPoints?: number })?.maxTouchPoints > 0)
+      const hasTouch = "ontouchstart" in window || (typeof navigator !== "undefined" && navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
       return isCoarseMQ || hasTouch
     }
 
