@@ -49,7 +49,7 @@ export default function Hero() {
     <section style={{
         display: 'flex',
         flexDirection: 'column',
-			gap: '16px',
+			gap: isMobile ? '4px' : '16px',
 			padding: '0 0 0 0',
         minHeight: '100vh',
         position: 'relative',
@@ -67,7 +67,7 @@ export default function Hero() {
 			gap: '12px',
 			position: 'relative',
 			zIndex: 1,
-			paddingTop: '4px'
+			paddingTop: isMobile ? '0px' : '4px'
 		  }}>
 			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: isMobile ? 'min(140px, 32vw)' : 'min(160px, 40vw)' }} width={160} height={48} />
 			<button
@@ -107,9 +107,9 @@ export default function Hero() {
 			</button>
 		  </div>
 
-		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 8 : 0 }}>
+		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 0 : 0 }}>
 		<motion.div
-			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '8px' : '64px' }}
+			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '0px' : '64px' }}
           variants={container}
           initial="hidden"
           animate="show"
