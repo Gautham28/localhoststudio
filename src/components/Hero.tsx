@@ -185,7 +185,7 @@ export default function Hero() {
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
-		  <motion.div style={{ marginTop: isMobile ? '24px' : '64px' }} variants={item}>
+		  <motion.div className="hero-slider" style={{ marginTop: isMobile ? '24px' : '64px' }} variants={item}>
             <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>

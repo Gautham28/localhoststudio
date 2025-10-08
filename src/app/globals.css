@@ -146,6 +146,9 @@ body {
   .hero-section {
     min-height: auto !important;
   }
+  .hero-slider {
+    margin-bottom: 64px !important; /* space above Services on mobile */
+  }
   /* Mobile-only: tighten space before Services */
   .services-section {
     padding-top: 24px !important; /* controlled here, not inline */
