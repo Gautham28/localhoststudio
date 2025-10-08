@@ -98,14 +98,14 @@ export default function Footer() {
             flexWrap: 'wrap',
             alignItems: 'center'
           }}>
-            <SocialIcon href="https://www.instagram.com" label="Instagram">
-              <Instagram size={26} color="#111" strokeWidth={2.5} />
+            <SocialIcon href="https://www.instagram.com/localhoststudio/" label="Instagram">
+              <Instagram size={26} color="#111" strokeWidth={1.5} />
             </SocialIcon>
-            <SocialIcon href="https://twitter.com" label="Twitter">
-              <Twitter size={26} color="#111" strokeWidth={2.5} />
+            <SocialIcon href="https://x.com/localhost_st" label="Twitter">
+              <Twitter size={26} color="#111" strokeWidth={1.5} />
             </SocialIcon>
-            <SocialIcon href="https://www.linkedin.com" label="LinkedIn">
-              <Linkedin size={26} color="#111" strokeWidth={2.5} />
+            <SocialIcon href="https://www.linkedin.com/company/localhost-studio" label="LinkedIn">
+              <Linkedin size={26} color="#111" strokeWidth={1.5} />
             </SocialIcon>
           </div>
         </div>
