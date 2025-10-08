@@ -90,7 +90,6 @@ export function SmoothCursor({
   },
 }: SmoothCursorProps) {
   const [isEnabled, setIsEnabled] = useState(false)
-  const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
@@ -115,7 +114,7 @@ export function SmoothCursor({
     const detectCoarsePointer = () => {
       if (typeof window === "undefined") return false
       const isCoarseMQ = window.matchMedia && window.matchMedia("(pointer: coarse)").matches
-      const hasTouch = "ontouchstart" in window || (navigator as any).maxTouchPoints > 0
+      const hasTouch = "ontouchstart" in window || (navigator as { maxTouchPoints?: number })?.maxTouchPoints > 0
       return isCoarseMQ || hasTouch
     }
 
@@ -126,11 +125,11 @@ export function SmoothCursor({
     const mql = window.matchMedia ? window.matchMedia("(pointer: coarse)") : null
     const handleChange = () => setIsEnabled(!detectCoarsePointer())
     if (mql && typeof mql.addEventListener === "function") mql.addEventListener("change", handleChange)
-    else if (mql && typeof (mql as any).addListener === "function") (mql as any).addListener(handleChange)
+    else if (mql && typeof (mql as { addListener?: (callback: () => void) => void }).addListener === "function") (mql as { addListener: (callback: () => void) => void }).addListener(handleChange)
 
     return () => {
       if (mql && typeof mql.removeEventListener === "function") mql.removeEventListener("change", handleChange)
-      else if (mql && typeof (mql as any).removeListener === "function") (mql as any).removeListener(handleChange)
+      else if (mql && typeof (mql as { removeListener?: (callback: () => void) => void }).removeListener === "function") (mql as { removeListener: (callback: () => void) => void }).removeListener(handleChange)
     }
   }, [])
 
@@ -179,11 +178,9 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
         const timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
 
         return () => clearTimeout(timeout)

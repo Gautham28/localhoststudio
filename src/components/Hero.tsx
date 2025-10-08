@@ -6,6 +6,7 @@ import { motion, Variants } from 'framer-motion';
 import { Tiles } from '@/components/ui/tiles';
 import { Slider3D } from '@/components/ui/slider3d';
 import { useContactModal } from '@/components/ContactModal';
+import Image from 'next/image';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -69,7 +70,7 @@ export default function Hero() {
 			zIndex: 1,
 			paddingTop: isMobile ? '0px' : '4px'
 		  }}>
-			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: isMobile ? 'min(140px, 32vw)' : 'min(160px, 40vw)' }} width={160} height={48} />
+			<Image src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: isMobile ? 'min(140px, 32vw)' : 'min(160px, 40vw)' }} width={160} height={48} />
 			<button
 			  onClick={openModal}
 			  style={{
