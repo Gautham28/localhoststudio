@@ -69,18 +69,19 @@ export default function Hero() {
 				alignItems: 'center',
 				justifyContent: 'center',
 				height: 52,
-				padding: '0 22px',
-				background: '#111',
-				color: '#fff',
+				padding: '0 28px',
+				background: '#fff',
+				color: '#111',
 				textDecoration: 'none',
 				borderRadius: 9999,
-				fontSize: 16,
+				fontSize: 'clamp(12px, 3vw, 16px)',
 				fontWeight: 700,
 				border: '1px solid #111',
 				boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
 				width: 'fit-content',
 				cursor: 'pointer',
-				fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+				fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+				whiteSpace: 'nowrap'
 			  }}
 			>
 			  Book a Call
