@@ -142,6 +142,10 @@ body {
   .hero-stack {
     align-items: flex-start !important;
   }
+  /* Mobile-only: tighten space before Services */
+  .services-section {
+    padding-top: 24px !important;
+  }
 }
 
 /* Prevent horizontal scrolling caused by full-bleed sections */

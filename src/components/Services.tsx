@@ -76,7 +76,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section style={{
+    <section className="services-section" style={{
       display: 'flex',
       flexDirection: 'column',
       gap: isMobile ? '28px' : '48px',
