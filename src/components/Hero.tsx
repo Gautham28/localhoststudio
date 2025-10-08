@@ -62,9 +62,29 @@ export default function Hero() {
 			paddingTop: '4px'
 		  }}>
 			<img src="/assets/logos/logodark.svg" alt="Localhost Studio" style={{ width: 'min(160px, 40vw)' }} width={160} height={48} />
-			<Button onClick={openModal} variant="outline" size="sm" className="border-black text-black md:size-cta">
+			<button
+			  onClick={openModal}
+			  style={{
+				display: 'inline-flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: 52,
+				padding: '0 22px',
+				background: '#111',
+				color: '#fff',
+				textDecoration: 'none',
+				borderRadius: 9999,
+				fontSize: 16,
+				fontWeight: 700,
+				border: '1px solid #111',
+				boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+				width: 'fit-content',
+				cursor: 'pointer',
+				fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+			  }}
+			>
 			  Book a Call
-			</Button>
+			</button>
 		  </div>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -105,9 +125,29 @@ export default function Hero() {
           </motion.p>
 
 		  <motion.div style={{ marginTop: '20px' }} variants={item}>
-			<Button onClick={openModal} size="sm" className="md:size-cta">
+			<button
+			  onClick={openModal}
+			  style={{
+				display: 'inline-flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: 52,
+				padding: '0 22px',
+				background: '#111',
+				color: '#fff',
+				textDecoration: 'none',
+				borderRadius: 9999,
+				fontSize: 16,
+				fontWeight: 700,
+				border: '1px solid #111',
+				boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+				width: 'fit-content',
+				cursor: 'pointer',
+				fontFamily: "Axiforma, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+			  }}
+			>
               Book a Call
-            </Button>
+            </button>
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
