@@ -107,7 +107,7 @@ export default function Hero() {
 			</button>
 		  </div>
 
-		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 0 : 0 }}>
+		<div className="hero-stack" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 0 : 0 }}>
 		<motion.div
 			  className="hero-content"
 			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '0px' : '64px', marginTop: 0 }}
