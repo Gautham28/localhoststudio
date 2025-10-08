@@ -101,7 +101,7 @@ export default function Hero() {
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 		<motion.div
-		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '56px' }}
+		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '12px' }}
           variants={container}
           initial="hidden"
           animate="show"
