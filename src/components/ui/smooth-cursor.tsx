@@ -89,6 +89,7 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
+  const [isEnabled, setIsEnabled] = useState(false)
   const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
@@ -109,7 +110,36 @@ export function SmoothCursor({
     damping: 35,
   })
 
+  // Decide whether the smooth cursor should be enabled (i.e., not on touch/coarse pointers)
   useEffect(() => {
+    const detectCoarsePointer = () => {
+      if (typeof window === "undefined") return false
+      const isCoarseMQ = window.matchMedia && window.matchMedia("(pointer: coarse)").matches
+      const hasTouch = "ontouchstart" in window || (navigator as any).maxTouchPoints > 0
+      return isCoarseMQ || hasTouch
+    }
+
+    const shouldEnable = !detectCoarsePointer()
+    setIsEnabled(shouldEnable)
+
+    // Also react to changes (e.g., device rotation or connecting a mouse)
+    const mql = window.matchMedia ? window.matchMedia("(pointer: coarse)") : null
+    const handleChange = () => setIsEnabled(!detectCoarsePointer())
+    if (mql && typeof mql.addEventListener === "function") mql.addEventListener("change", handleChange)
+    else if (mql && typeof (mql as any).addListener === "function") (mql as any).addListener(handleChange)
+
+    return () => {
+      if (mql && typeof mql.removeEventListener === "function") mql.removeEventListener("change", handleChange)
+      else if (mql && typeof (mql as any).removeListener === "function") (mql as any).removeListener(handleChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isEnabled) {
+      // Ensure default cursor when disabled
+      if (typeof document !== "undefined") document.body.style.cursor = "auto"
+      return
+    }
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -178,7 +208,9 @@ export function SmoothCursor({
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
     }
-  }, [cursorX, cursorY, rotation, scale])
+  }, [isEnabled, cursorX, cursorY, rotation, scale])
+
+  if (!isEnabled) return null
 
   return (
     <motion.div
