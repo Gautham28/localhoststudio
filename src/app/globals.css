@@ -144,7 +144,7 @@ body {
   }
   /* Mobile-only: tighten space before Services */
   .services-section {
-    padding-top: 24px !important;
+    padding-top: 24px !important; /* controlled here, not inline */
   }
 }
 

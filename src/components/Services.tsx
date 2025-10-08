@@ -80,7 +80,7 @@ export default function Services() {
       display: 'flex',
       flexDirection: 'column',
       gap: isMobile ? '28px' : '48px',
-      padding: isMobile ? '64px 0 12px' : '160px 0 20px',
+      padding: isMobile ? '0 0 12px' : '160px 0 20px',
       position: 'relative',
       overflow: 'hidden',
       // @ts-expect-error CSS var
