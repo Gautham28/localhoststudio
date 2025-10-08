@@ -154,7 +154,20 @@ export default function Footer() {
               border: '1px solid #111',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               width: 'fit-content',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transition: 'all 0.2s ease-in-out'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#fff';
+              e.currentTarget.style.color = '#111';
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#111';
+              e.currentTarget.style.color = '#fff';
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
             }}
           >
             Book a call
