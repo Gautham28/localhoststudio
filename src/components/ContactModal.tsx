@@ -3,7 +3,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { MessageCircle, Phone } from "lucide-react";
 
-
 type ContactModalContextValue = {
   open: boolean;
   openModal: () => void;
@@ -40,6 +39,13 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Added controlled form state + UX states
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const services = [
     "Web Development",
     "UI/UX Design",
@@ -61,6 +67,41 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
     mq?.addEventListener("change", onChange);
     return () => mq?.removeEventListener("change", onChange);
   }, []);
+
+  const handleSubmit = async () => {
+    setError(null);
+    if (!name.trim() || !email.trim()) {
+      setError("Please enter name and email.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          services: selectedServices,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.ok) throw new Error(data?.error || "Failed to send.");
+      setSent(true);
+      setTimeout(() => {
+        setName("");
+        setEmail("");
+        setSelectedServices([]);
+        setSent(false);
+        onClose();
+      }, 1200);
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Something went wrong.";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!open) return null;
 
@@ -124,9 +165,28 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
             <p style={{ margin: "10px 0 18px", color: "#bdbdbd", fontSize: 14 }}>
               Tell us more about yourself and what you’re looking to create.
             </p>
+
+            {/* Error feedback */}
+            {error && (
+              <div style={{ color: "#ff6b6b", margin: "4px 0 12px", fontSize: 14 }}>
+                {error}
+              </div>
+            )}
+
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <input placeholder="Your Name" style={inputStyle} />
-              <input placeholder="Email Address" type="email" style={inputStyle} />
+              <input
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={inputStyle}
+              />
+              <input
+                placeholder="Email Address"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={inputStyle}
+              />
             </div>
             <div style={{ marginTop: 20 }}>
               <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 10 }}>Services Required</div>
@@ -166,11 +226,13 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
                 color: "#0e0e0e",
                 fontWeight: 700,
                 fontSize: 17,
-                cursor: "pointer",
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.8 : 1,
               }}
-              onClick={onClose}
+              onClick={handleSubmit}
+              disabled={loading}
             >
-              Send Message
+              {loading ? "Sending..." : sent ? "Sent!" : "Send Message"}
             </button>
           </div>
         </div>
@@ -225,9 +287,27 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Tell us more about yourself and what you’re looking to create.
               </p>
 
+              {/* Error feedback */}
+              {error && (
+                <div style={{ color: "#ff6b6b", margin: "4px 0 12px", fontSize: 14 }}>
+                  {error}
+                </div>
+              )}
+
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <input placeholder="Your Name" style={inputStyle} />
-                <input placeholder="Email Address" type="email" style={inputStyle} />
+                <input
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  style={inputStyle}
+                />
+                <input
+                  placeholder="Email Address"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={inputStyle}
+                />
               </div>
 
               <div style={{ marginTop: 24 }}>
@@ -269,11 +349,13 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
                   color: "#0e0e0e",
                   fontWeight: 700,
                   fontSize: 18,
-                  cursor: "pointer",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.8 : 1,
                 }}
-                onClick={onClose}
+                onClick={handleSubmit}
+                disabled={loading}
               >
-                Send Message
+                {loading ? "Sending..." : sent ? "Sent!" : "Send Message"}
               </button>
             </div>
           </div>
@@ -311,5 +393,3 @@ const inputStyle: React.CSSProperties = {
 };
 
 export default ContactModalProvider;
-
-
