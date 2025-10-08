@@ -127,6 +127,13 @@ body {
   box-sizing: border-box;
 }
 
+/* Mobile-specific: tighten global padding to reduce top whitespace */
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+}
+
 /* Prevent horizontal scrolling caused by full-bleed sections */
 html, body {
   overflow-x: hidden;

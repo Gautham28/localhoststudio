@@ -64,7 +64,7 @@ export default function Hero() {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'space-between',
-			gap: '12px',
+			gap: isMobile ? '8px' : '12px',
 			position: 'relative',
 			zIndex: 1,
 			paddingTop: isMobile ? '0px' : '4px'
@@ -109,7 +109,7 @@ export default function Hero() {
 
 		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 0 : 0 }}>
 		<motion.div
-			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '0px' : '64px' }}
+			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '0px' : '64px', marginTop: isMobile ? '-12px' : '0px' }}
           variants={container}
           initial="hidden"
           animate="show"
