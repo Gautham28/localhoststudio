@@ -101,7 +101,7 @@ export default function Hero() {
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 		<motion.div
-		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '12px' }}
+		  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: '64px' }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -136,7 +136,7 @@ export default function Hero() {
 			Building beautiful, scalable, and high-performing <span className="hidden sm:inline"><br/></span>web experiences from the ground up.
           </motion.p>
 
-		  <motion.div style={{ marginTop: '20px' }} variants={item}>
+		  <motion.div style={{ marginTop: '32px' }} variants={item}>
 			<button
 			  onClick={openModal}
 			  style={{
@@ -176,7 +176,7 @@ export default function Hero() {
           </motion.div>
 
           {/* 3D Slider below the Book a Call button */}
-		  <motion.div style={{ marginTop: '32px' }} variants={item}>
+		  <motion.div style={{ marginTop: '64px' }} variants={item}>
             <Slider3D images={sliderImages} />
           </motion.div>
         </motion.div>
