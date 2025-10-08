@@ -132,6 +132,13 @@ body {
   body {
     padding: 12px;
   }
+  /* Mobile tightening for hero */
+  .hero-topbar {
+    gap: 8px !important;
+  }
+  .hero-content {
+    margin-top: -12px !important;
+  }
 }
 
 /* Prevent horizontal scrolling caused by full-bleed sections */
