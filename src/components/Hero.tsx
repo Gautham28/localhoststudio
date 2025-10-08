@@ -107,9 +107,9 @@ export default function Hero() {
 			</button>
 		  </div>
 
-		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+		<div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', paddingTop: isMobile ? 8 : 0 }}>
 		<motion.div
-			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '24px' : '64px' }}
+			  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px', position: 'relative', zIndex: 1, paddingTop: isMobile ? '8px' : '64px' }}
           variants={container}
           initial="hidden"
           animate="show"
