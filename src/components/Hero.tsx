@@ -31,10 +31,10 @@ const item: Variants = {
 export default function Hero() {
   const sliderImages = [
     '/assets/images/darkdashboard.png',
-    '/assets/images/realestate.png',
     '/assets/images/sports.png',
     '/assets/images/uxora.png',
-    '/assets/images/sports2.png'
+    '/assets/images/sports2.png',
+	'/assets/images/goboozy.jpg',
   ];
   const { openModal } = useContactModal();
   const [isMobile, setIsMobile] = React.useState(false);
